@@ -12,23 +12,25 @@ void setup() {
 
 void loop() {
   motionDetected = analogRead(motionPin);
-  if(digitalRead(motionPin) == HIGH){
+  if (digitalRead(motionPin) == HIGH){
     motionDetected = !motionDetected;
   }
 
   Serial.print(motionDetected);
-  Serial.print(", ");
+  Serial.print(',');
   Serial.println(analogRead(potPin));
 
-  if(motionDetected){
+  if (motionDetected) {
+    // Since analogRead returns a value from 0 to 1023 and analogWrite takes a value from 0 to 255,
+    // we need to find a way to map the read value to the write value.
     int ledValue = 127 + analogRead(potPin) * 0.125;
     analogWrite(ledPin, ledValue);
   }
   
-  if (Serial.available()){
+  if (Serial.available()) {
     int input = Serial.read();
 
-    switch(input){
+    switch (input) {
       // 1 is led on
       case '1':
         digitalWrite(ledPin, HIGH);
