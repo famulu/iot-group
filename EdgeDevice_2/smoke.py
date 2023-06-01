@@ -18,7 +18,7 @@ smoke_led_command_topic = "SmokeLed"
 
 
 def generate_value():
-    return random.randrange(200, 500)
+    return random.randrange(40, 200)
 
 
 def generate_payload(key, value):

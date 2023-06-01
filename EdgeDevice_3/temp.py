@@ -17,7 +17,7 @@ thermo_led_command_topic = "ThermoLed"
 
 
 def generate_value():
-    return random.randrange(512)
+    return random.randrange(23, 28)
 
 
 def generate_payload(key, value):

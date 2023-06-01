@@ -1,7 +1,7 @@
 {
-  "name": "getting-started",
+  "name": "IoT-Discord",
   "version": "1.0.0",
-  "description": "Discord example app",
+  "description": "Discord API to communicate with IoT",
   "main": "app.js",
   "type": "module",
   "engines": {
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node app.js",
     "register": "node commands.js",
-    "dev": "nodemon app.js"
+    "dev": "node_modules/.bin/nodemon app.js"
   },
   "author": "Shay DeWael",
   "license": "MIT",

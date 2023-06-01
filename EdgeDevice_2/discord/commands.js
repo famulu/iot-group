@@ -1,48 +1,48 @@
-import 'dotenv/config';
-import { InstallGlobalCommands } from './utils.js';
+import "dotenv/config";
+import { InstallGlobalCommands } from "./utils.js";
 
 export const commands = {
   "Buzzer ON": {
     payload: 3,
-    topic: "SmokeBuzzer"
+    topic: "SmokeBuzzer",
   },
   "Buzzer OFF": {
     payload: 4,
-    topic: "SmokeBuzzer"
+    topic: "SmokeBuzzer",
   },
   "Fan ON": {
     payload: 3,
-    topic: "ThermoFan"
+    topic: "ThermoFan",
   },
   "Fan OFF": {
     payload: 4,
-    topic: "ThermoFan"
+    topic: "ThermoFan",
   },
   "Temperature LED ON": {
     payload: 1,
-    topic: "ThermoLed"
+    topic: "ThermoLed",
   },
   "Temperature LED OFF": {
     payload: 2,
-    topic: "ThermoLed"
+    topic: "ThermoLed",
   },
   "Smoke LED ON": {
     payload: 1,
-    topic: "SmokeLed"
+    topic: "SmokeLed",
   },
   "Smoke LED OFF": {
     payload: 2,
-    topic: "SmokeLed"
+    topic: "SmokeLed",
   },
   "Motion LED ON": {
     payload: 1,
-    topic: "MotionLed"
+    topic: "MotionLed",
   },
   "Motion LED OFF": {
     payload: 2,
-    topic: "MotionLed"
-  }
-}
+    topic: "MotionLed",
+  },
+};
 
 // Get the game choices from game.js
 function createCommandChoices() {
@@ -59,20 +59,20 @@ function createCommandChoices() {
 
 // Simple test command
 const TEST_COMMAND = {
-  name: 'test',
-  description: 'Basic command',
+  name: "test",
+  description: "Basic command",
   type: 1,
 };
 
 // Command containing options
 const COMMAND_COMMAND = {
-  name: 'command',
-  description: 'Send a command to an actuator',
+  name: "command",
+  description: "Send a command to an actuator",
   options: [
     {
       type: 3,
-      name: 'command',
-      description: 'Pick your command',
+      name: "command",
+      description: "Pick your command",
       required: true,
       choices: createCommandChoices(),
     },
