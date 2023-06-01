@@ -1,11 +1,6 @@
-import random
-import time
-
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 import serial
-
-in_production = False
 
 thingsboard_topic = "v1/devices/me/telemetry"
 temp_access_token = "9KDPDLVh804BkGWxj4Ht"
@@ -14,10 +9,6 @@ thingsboard_key = "temp"
 temp_topic = "temp"
 fan_command_topic = "ThermoFan"
 thermo_led_command_topic = "ThermoLed"
-
-
-def generate_value():
-    return random.randrange(23, 28)
 
 
 def generate_payload(key, value):
@@ -45,8 +36,7 @@ def on_message(client, userdata, msg):
     print("Received message: " + msg.payload.decode())
     print("From: " + msg.topic)
 
-    if in_production:
-        temp_arduino.write(msg.payload)
+    temp_arduino.write(msg.payload)
 
 
 mqtt_client = mqtt.Client()
@@ -56,15 +46,10 @@ mqtt_client.on_message = on_message
 mqtt_client.connect("test.mosquitto.org")
 mqtt_client.loop_start()
 
-if in_production:
-    temp_arduino = serial.Serial('/dev/ttyS0', 9600)
+temp_arduino = serial.Serial('/dev/ttyS0', 9600)
 
-    while True:
-        if temp_arduino.in_waiting:
-            temp_data = temp_arduino.readline().strip()
-            publish_temp_value(temp_data)
-            print("temp_data: ", temp_data)
-else:
-    while True:
-        publish_temp_value(generate_value())
-        time.sleep(2)
+while True:
+    if temp_arduino.in_waiting:
+        temp_data = temp_arduino.readline().strip()
+        publish_temp_value(temp_data)
+        print("temp_data: ", temp_data)
